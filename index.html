@@ -84,9 +84,12 @@
         <div id="page-num"></div>
     </div>
 
+    <!-- Cargar pdf.js desde un CDN -->
     <script src="https://mozilla.github.io/pdf.js/build/pdf.js"></script>
+
     <script>
-        var url = 'ruta_del_pdf.pdf'; // Cambia a la ruta de tu archivo PDF.
+        // URL del PDF
+        var url = 'https://raw.githubusercontent.com/BabyHard/pdfff/gh-pages/Catalogo%20septiembre.pdf';
 
         var pdfDoc = null,
             pageNum = 1,
@@ -101,6 +104,9 @@
             pdfDoc = pdfDoc_;
             document.getElementById('page-num').textContent = `Página ${pageNum} de ${pdfDoc.numPages}`;
             renderPage(pageNum);
+        }).catch(function(error) {
+            console.error("Error al cargar el PDF: ", error);
+            alert("No se pudo cargar el PDF. Verifica que el enlace sea correcto y que el PDF esté disponible.");
         });
 
         function renderPage(num) {
@@ -154,3 +160,4 @@
     </script>
 </body>
 </html>
+
